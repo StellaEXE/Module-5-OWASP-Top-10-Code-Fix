@@ -13,3 +13,5 @@ This code demonstrates an Insecure Direct Object Reference (IDOR). The endpoint 
 **Authorization Check:** It explicitly compares the current_user.id from the session with the requested user_id. If they don’t match, it returns a 403 Forbidden error, enforcing proper access control.
 
 **OWASP Reference:** A01:2021-Broken Access Control
+
+## 2. A02:2021 – Cryptographic Failures
