@@ -40,7 +40,7 @@ By explicitly casting the input to a string (str()), we ensure that even if an a
 
 **OWASP Reference:** Injection
 
-## **Insecure Design (A04:2021)**
+## **4. Insecure Design (A04:2021)**
 
 ### **Analysis of Snippet 7**
 **The Vulnerability:** The code snippet allows a password reset solely by providing an email. There is no identity verification (like a token sent via email or an old password check). Any user can change the password of any other user simply by knowing their email address.
