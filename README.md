@@ -1,15 +1,14 @@
-## **1. A01:2021 – Broken Access Control**
+## **1. Broken Access Control (A01:2021)**
 
 ### **Security Flaw:**
 
 This code demonstrates an Insecure Direct Object Reference (IDOR). The endpoint retrieves account information based solely on a user_id provided in the URL. There is no logic to verify if the requester is the owner of the account or an authorized admin. An attacker could iterate through IDs (e.g., /account/1, /account/2) to scrape sensitive data from all users.
 
-### **How the fix addresses the vulnerability**
+### **Explanation of Fix**
+The fix implements an access control check. By comparing the requested user_id against the current_user.id from the secure session, we ensure users can only access their own records. Using @login_required also ensures that unauthenticated "anonymous" users cannot hit the endpoint.
 
-**Authentication:** The @login_required decorator ensures the user is identified.
+### **References**
 
-**Authorization Check:** It explicitly compares the current_user.id from the session with the requested user_id. If they don’t match, it returns a 403 Forbidden error, enforcing proper access control.
-
-**OWASP Reference:** A01:2021-Broken Access Control
+OWASP: Broken Access Control
 
 ## 2. A02:2021 – Cryptographic Failures
