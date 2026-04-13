@@ -15,3 +15,15 @@ The secure version of the code validates the identity of the requester against t
 
 ## 2. Cryptographic Failures (A02:2021)
 
+This involves the use of weak or insecure cryptographic practices, often leading to sensitive data exposure.
+
+### **Analysis of Snippets 3 & 4**
+**The Flaw:** Snippet 3 uses MD5, which is cryptographically broken and vulnerable to collision attacks. Snippet 4 uses SHA-1 without a salt. SHA-1 is no longer secure for passwords, and the lack of a salt makes the hashes vulnerable to "Rainbow Table" attacks.
+
+**Security Risk:** If the database is leaked, attackers can instantly reverse these hashes using modern hardware or pre-computed tables to reveal clear-text passwords.
+
+### **The Fix:**
+
+Using Argon2id (the winner of the Password Hashing Competition) provides high resistance to GPU/ASIC cracking. It automatically generates a unique salt for every password.
+
+**OWASP Reference:** Cryptographic Failures
