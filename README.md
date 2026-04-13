@@ -39,3 +39,14 @@ The fix uses parameterized queries (also known as prepared statements). Instead 
 By explicitly casting the input to a string (str()), we ensure that even if an attacker passes a dictionary or an operator, it is treated as a literal string value. This prevents the NoSQL engine from interpreting the input as a query command.
 
 **OWASP Reference:** Injection
+
+## **Insecure Design (A04:2021)**
+
+### **Analysis of Snippet 7**
+**The Vulnerability:** The code snippet allows a password reset solely by providing an email. There is no identity verification (like a token sent via email or an old password check). Any user can change the password of any other user simply by knowing their email address.
+
+### **The Fix:**
+
+The fix moves from a "direct update" to a broken-link workflow. Instead of changing the password immediately, the system generates a cryptographically strong, time-limited token and sends it to the registered email. This ensures that only the person with access to the email account can initiate the reset.
+
+**OWASP Reference:** Insecure Design
